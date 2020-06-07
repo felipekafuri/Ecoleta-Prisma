@@ -4,15 +4,17 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 model Items {
-  id       String  @default(autoincrement()) @id
+  id       String @default(autoincrement()) @id
   image    String
+  pointsId Int?
   title    String
-  Points   Points? @relation(fields: [pointsId], references: [id])
-  pointsId String?
+
+  Points                 Points? @relation(fields: [pointsId_ItemsToPoints], references: [id])
+  pointsId_ItemsToPoints String?
 }
 
 model Points {

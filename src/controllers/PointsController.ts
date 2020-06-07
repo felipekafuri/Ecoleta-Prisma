@@ -14,6 +14,7 @@ class PointsController {
       longitude,
       city,
       uf,
+      items,
     } = request.body;
 
     const point = {
@@ -25,6 +26,7 @@ class PointsController {
       longitude,
       city,
       uf,
+      items,
     };
 
     await prisma.points.create({

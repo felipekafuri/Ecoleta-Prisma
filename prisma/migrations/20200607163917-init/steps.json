@@ -1,0 +1,42 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteField",
+      "model": "Items",
+      "field": "pointsId_ItemsToPoints"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Items",
+      "field": "pointsId",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Items",
+          "field": "Points"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "newValue": "[pointsId]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Points",
+      "field": "items",
+      "type": "Items",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Points",
+      "field": "item"
+    }
+  ]
+}
